@@ -17,7 +17,7 @@ function removeLoadingSpinner() {
 }
 // Get Quote From API
 async function getQuote() {
-    loading();
+    showLoadingSpinner();
     const proxyUrl = 'https://protected-atoll-22521.herokuapp.com/';
     const apiUrl = 'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json';
     try {
@@ -36,7 +36,7 @@ async function getQuote() {
             quoteAuthor.innerText = data.quoteAuthor;
         }
         quoteText.innerText = data.quoteText;
-        complete();
+        removeLoadingSpinner();
 
     } catch (error) {
         getQuote();
